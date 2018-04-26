@@ -1,3 +1,5 @@
+import { WSAELOOP } from "constants";
+
 const Forecast = require("forecast-api");
 const express = require("express");
 const app = express();
@@ -17,8 +19,12 @@ const forecast = new Forecast({
 //     res.send(projects);
 //   });
 // });
-
-app.get("/projects", (req, res) => {
+app.get("/", (req, res) => {
+  res.send(
+    "To access projects usr /api/projects and to access assignments use /api/assignments"
+  );
+});
+app.get("/api/projects", (req, res) => {
   forecast.projects((err, projects) => {
     if (err) throw err;
     // console.log(projects);
@@ -26,7 +32,7 @@ app.get("/projects", (req, res) => {
   });
 });
 
-app.get("/assignment", (req, res) => {
+app.get("/api/assignments", (req, res) => {
   forecast.assignments(function(err, assignments) {
     if (err) throw err;
     res.send(assignments);
@@ -34,5 +40,8 @@ app.get("/assignment", (req, res) => {
   });
 });
 
-const port = process.env.PORT || 3000;
-app.listen(port, () => console.log(`listening on port ${port}`));
+// const port = process.env.PORT || 3000;
+// app.listen(port, () => console.log(`listening on port ${port}`));
+
+// const port = process.env.PORT || 3000;
+app.listen(process.env.PORT);

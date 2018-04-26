@@ -1,0 +1,5 @@
+curl -i \
+  -H 'Forecast-Account-ID: 138587'\
+  -H 'Authorization: Bearer 1176.pt.OxHcwX8xWYOX7IpUtRfkvhnvfPiIduUJESe9vUS3gC7SLfSRjcWy_CkQpsOTskBs6y1ZI-IBYM1t6wNKHlXrkw'\
+  -H 'User-Agent: Harvest API Example' \
+  "https://api.forecastapp.com/projects"
